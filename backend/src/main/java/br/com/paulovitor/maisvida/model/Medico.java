@@ -3,6 +3,8 @@ package br.com.paulovitor.maisvida.model;
 import javax.persistence.*;
 import java.io.Serializable;
 
+import static javax.persistence.CascadeType.ALL;
+
 @Entity
 public class Medico implements Serializable {
 
@@ -20,7 +22,7 @@ public class Medico implements Serializable {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @ManyToOne
+    @ManyToOne(cascade = ALL)
     private Endereco endereco;
 
     public Medico() {
