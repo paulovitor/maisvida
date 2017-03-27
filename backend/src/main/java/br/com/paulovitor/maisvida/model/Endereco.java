@@ -17,7 +17,7 @@ public class Endereco {
     private Integer id;
 
     @NotEmpty(message = "{erro.campo.obrigatorio}")
-    @Length(min = 3, max = 20, message = "{erro.campo.tamanho}")
+    @Length(min = 2, max = 20, message = "{erro.campo.tamanho}")
     private String estado;
 
     @NotEmpty(message = "{erro.campo.obrigatorio}")
