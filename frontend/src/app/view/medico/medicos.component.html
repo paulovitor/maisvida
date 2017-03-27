@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="col-md-12">
+    <h1>Listagem de médicos</h1>
+    <nav>
+      <a routerLink="/medicos/add" routerLinkActive="active">Novo</a>
+    </nav>
+    <table class="table table-condensed">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Primeiro Nome</th>
+        <th>Último Nome</th>
+        <th>Email</th>
+        <th>Ativo</th>
+        <th>Ocupado</th>
+        <th>Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let medico of medicos" (click)="onSelect(medico)"
+          [class.active]="medico === selectedMedico">
+        <td>{{medico.id}}</td>
+        <td>{{medico.primeiroNome}}</td>
+        <td>{{medico.ultimoNome}}</td>
+        <td>{{medico.email}}</td>
+        <td><input type="checkbox" [checked]="medico.ativo" [disabled]="true"></td>
+        <td><input type="radio" [checked]="medico.status == 'OCUPADO'" [disabled]="true"></td>
+        <td>
+          <a routerLink="['/medicos/edit', medico.id]" class="btn btn-link">Editar</a> |
+          <a routerLink="['/medicos', medico.id]" class="btn btn-link">Visualizar</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

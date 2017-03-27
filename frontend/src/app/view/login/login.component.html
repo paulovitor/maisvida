@@ -1,0 +1,23 @@
+<div class="container">
+  <form class="form-login">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4>Desafio MaisVida</h4>
+        <div class="input-group form-group">
+          <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+          <input type="text" name="login" [(ngModel)]="login.email" #email="ngModel" class="form-control">
+        </div>
+        <div class="input-group form-group">
+          <div class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></div>
+          <input type="text" name="password" [(ngModel)]="login.password" #password="ngModel" class="form-control">
+        </div>
+        <div class="checkbox form-group">
+          <label><input type="checkbox" name="remember" [(ngModel)]="login.remember">Remember me</label>
+        </div>
+        <button type="submit" (click)="logIn()" class="btn btn-lg btn-success btn-block">
+          Log In
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

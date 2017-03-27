@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="col-md-12">
+    <h1>Cadastro de médicos</h1>
+    <form class="form-inline">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="primeiroNome">Primeiro Nome</label>
+          <input type="text" class="form-control" id="primeiroNome" placeholder="Nome do Médico">
+        </div>
+        <div class="form-group">
+          <label for="ultimoNome">Último Nome</label>
+          <input type="text" class="form-control" id="ultimoNome" placeholder="Nome do Médico">
+        </div>
+        <div class="form-group">
+          <label for="especialidade">Especialidade</label>
+          <select class="form-control" id="especialidade"></select>
+        </div>
+      </div>
+      <br>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <label for="ativo">Ativo</label>
+          <div class="checkbox">
+            <label><input type="checkbox" id="ativo" value="">Sim</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <div class="radio">
+            <label class="radio-inline">
+              <input type="radio" name="status" id="ocupado" value="ocupado"> Ocupado
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="status" id="disponivel" value="disponivel"> Disponivel
+            </label>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="estado">Estado</label>
+          <select class="form-control" id="estado"></select>
+        </div>
+        <div class="form-group">
+          <label for="cidade">Cidade</label>
+          <select class="form-control" id="cidade"></select>
+        </div>
+      </div>
+      <br>
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary">Salvar médico</button>
+        <button type="button" class="btn btn-default">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
