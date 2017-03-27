@@ -19,7 +19,7 @@ export class MedicoEditComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
-      if (id !== NaN) {
+      if (!isNaN(id)) {
         this.medicoService.getMedico(id)
           .then(medico => this.medico = medico);
       }
