@@ -1,16 +1,27 @@
 package br.com.paulovitor.maisvida.model;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "endereco")
 public class Endereco {
 
     @Id
     @GeneratedValue
     private Integer id;
+
+    @NotEmpty(message = "{erro.campo.obrigatorio}")
+    @Length(min = 3, max = 20, message = "{erro.campo.tamanho}")
     private String estado;
+
+    @NotEmpty(message = "{erro.campo.obrigatorio}")
+    @Length(min = 3, max = 80, message = "{erro.campo.tamanho}")
     private String cidade;
 
     public Endereco() {
