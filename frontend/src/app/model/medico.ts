@@ -1,6 +1,5 @@
 import {Especialidade} from "./especialidade";
 import {Status} from "./status";
-import {Endereco} from "./endereco";
 
 export class Medico {
   id: number;
@@ -10,5 +9,6 @@ export class Medico {
   email: string;
   ativo: boolean;
   status: Status;
-  endereco: Endereco;
+  estado: string;
+  cidade: string;
 }

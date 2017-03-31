@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Http} from "@angular/http";
+import {Http, Headers} from "@angular/http";
 
 import "rxjs/add/operator/toPromise";
 
@@ -9,6 +9,7 @@ import {Medico} from "../model/medico";
 export class MedicoService {
 
   private medicosUrl = 'api/medicos';
+  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {
   }
@@ -31,5 +32,22 @@ export class MedicoService {
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
+  }
+
+  create(medico: Medico): Promise<Medico> {
+    return this.http
+      .post(this.medicosUrl, JSON.stringify(medico), {headers: this.headers})
+      .toPromise()
+      .then(response => response.json().data)
+      .catch(this.handleError);
+  }
+
+  update(medico: Medico): Promise<Medico> {
+    const url = `${this.medicosUrl}/${medico.id}`;
+    return this.http
+      .put(url, JSON.stringify(medico), {headers: this.headers})
+      .toPromise()
+      .then(() => medico)
+      .catch(this.handleError);
   }
 }

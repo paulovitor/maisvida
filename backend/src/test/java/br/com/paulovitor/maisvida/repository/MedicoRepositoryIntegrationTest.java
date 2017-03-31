@@ -1,6 +1,5 @@
 package br.com.paulovitor.maisvida.repository;
 
-import br.com.paulovitor.maisvida.model.Endereco;
 import br.com.paulovitor.maisvida.model.Medico;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +26,7 @@ public class MedicoRepositoryIntegrationTest {
     @Test
     public void deveSalvarMedico() {
         // give
-        Medico novo = new Medico("José", "Miguel", CARDIOLOGISTA, "josemiguel@gmail.com", true, DISPONIVEL, new Endereco("DF", "Brasilia"));
+        Medico novo = new Medico("José", "Miguel", CARDIOLOGISTA, "josemiguel@gmail.com", true, DISPONIVEL, "DF", "Brasilia");
 
         // when
         Medico resultado = repository.save(novo);
@@ -40,7 +39,7 @@ public class MedicoRepositoryIntegrationTest {
     @Test
     public void deveRecuperarPorId() {
         // give
-        Medico novo = entityManager.persist(new Medico("Maria", "Cristina", PEDIATRA, "maria@gmail.com", true, DISPONIVEL, new Endereco("DF", "Brasilia")));
+        Medico novo = entityManager.persist(new Medico("Maria", "Cristina", PEDIATRA, "maria@gmail.com", true, DISPONIVEL, "DF", "Brasilia"));
 
         // when
         Medico resultado = repository.findOne(novo.getId());
@@ -52,8 +51,8 @@ public class MedicoRepositoryIntegrationTest {
     @Test
     public void deveRecuperarTodos() {
         // give
-        entityManager.persist(new Medico("Maria", "Cristina", PEDIATRA, "maria@gmail.com", true, DISPONIVEL, new Endereco("DF", "Brasilia")));
-        entityManager.persist(new Medico("José", "Miguel", CARDIOLOGISTA, "josemiguel@gmail.com", true, DISPONIVEL, new Endereco("DF", "Brasilia")));
+        entityManager.persist(new Medico("Maria", "Cristina", PEDIATRA, "maria@gmail.com", true, DISPONIVEL, "DF", "Brasilia"));
+        entityManager.persist(new Medico("José", "Miguel", CARDIOLOGISTA, "josemiguel@gmail.com", true, DISPONIVEL, "DF", "Brasilia"));
 
         // when
         Iterable<Medico> medicos = repository.findAll();

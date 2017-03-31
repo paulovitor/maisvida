@@ -1,6 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 import {Medico} from "../../model/medico";
-import {Router} from "@angular/router";
 import {MedicoService} from "../../service/medico.service";
 
 @Component({

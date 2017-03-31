@@ -1,0 +1,15 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" [routerLink]="['/']">
+        MaisVida
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a [routerLink]="['/medicos/add']" routerLinkActive="active">Novo</a></li>
+        <li><a href="#" (click)="logout(); $event.preventDefault()">Logoff</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

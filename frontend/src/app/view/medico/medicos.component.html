@@ -1,9 +1,7 @@
+<header></header>
 <div class="container">
   <div class="col-md-12">
     <h1>Listagem de médicos</h1>
-    <nav>
-      <a routerLink="/medicos/add" routerLinkActive="active">Novo</a>
-    </nav>
     <table class="table table-condensed">
       <thead>
       <tr>
@@ -26,8 +24,8 @@
         <td><input type="checkbox" [checked]="medico.ativo" [disabled]="true"></td>
         <td><input type="radio" [checked]="medico.status == 'OCUPADO'" [disabled]="true"></td>
         <td>
-          <a routerLink="['/medicos/edit', medico.id]" class="btn btn-link">Editar</a> |
-          <a routerLink="['/medicos', medico.id]" class="btn btn-link">Visualizar</a>
+          <a routerLink="['/edit/${medico.id}']" class="btn btn-link">Editar</a> |
+          <a routerLink="['/${medico.id}']" class="btn btn-link">Visualizar</a>
         </td>
       </tr>
       </tbody>

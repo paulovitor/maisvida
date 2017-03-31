@@ -3,25 +3,29 @@ package br.com.paulovitor.maisvida.controller;
 import br.com.paulovitor.maisvida.model.Medico;
 import br.com.paulovitor.maisvida.repository.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/medicos")
 public class MedicoController {
 
-    private MedicoRepository repository;
+    private MedicoRepository medicoRepository;
 
     @Autowired
-    public MedicoController(MedicoRepository repository) {
-        this.repository = repository;
+    public MedicoController(MedicoRepository medicoRepository) {
+        this.medicoRepository = medicoRepository;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Medico> list() {
-        return repository.findAll();
+        return medicoRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public Medico create(@RequestBody @Valid Medico medico) {
+        return medicoRepository.save(medico);
     }
 }

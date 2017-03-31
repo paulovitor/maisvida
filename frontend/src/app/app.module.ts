@@ -11,11 +11,13 @@ import {AppRoutingModule} from "./app-routing.module";
 import {LoginComponent} from "./view/login/login.component";
 import {MedicoEditComponent} from "./view/medico/medico-edit.component";
 import {MedicoViewComponent} from "./view/medico/medico-view.component";
+import {HeaderComponent} from "./view/header/header.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    HeaderComponent,
     MedicosComponent,
     MedicoEditComponent,
     MedicoViewComponent

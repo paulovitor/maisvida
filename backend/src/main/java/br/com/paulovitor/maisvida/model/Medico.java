@@ -1,14 +1,13 @@
 package br.com.paulovitor.maisvida.model;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-
-import static javax.persistence.CascadeType.ALL;
 
 @Entity
 @Table(name = "medico")
@@ -40,21 +39,26 @@ public class Medico implements Serializable {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @NotNull(message = "{erro.campo.obrigatorio}")
-    @ManyToOne(cascade = ALL)
-    private Endereco endereco;
+    @NotEmpty(message = "{erro.campo.obrigatorio}")
+    @Length(min = 2, max = 20, message = "{erro.campo.tamanho}")
+    private String estado;
+
+    @NotEmpty(message = "{erro.campo.obrigatorio}")
+    @Length(min = 3, max = 80, message = "{erro.campo.tamanho}")
+    private String cidade;
 
     public Medico() {
     }
 
-    public Medico(String primeiroNome, String ultimoNome, Especialidade especialidade, String email, boolean ativo, Status status, Endereco endereco) {
+    public Medico(String primeiroNome, String ultimoNome, Especialidade especialidade, String email, boolean ativo, Status status, String estado, String cidade) {
         this.primeiroNome = primeiroNome;
         this.ultimoNome = ultimoNome;
         this.especialidade = especialidade;
         this.email = email;
         this.ativo = ativo;
         this.status = status;
-        this.endereco = endereco;
+        this.estado = estado;
+        this.cidade = cidade;
     }
 
     public Integer getId() {
@@ -85,7 +89,11 @@ public class Medico implements Serializable {
         return status;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public String getEstado() {
+        return estado;
+    }
+
+    public String getCidade() {
+        return cidade;
     }
 }
