@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Medico} from "../../model/medico";
 import {MedicoService} from "../../service/medico.service";
+import {Router} from "@angular/router";
 
 @Component({
   moduleId: module.id,
@@ -12,7 +13,7 @@ export class MedicosComponent implements OnInit {
   medicos: Medico[];
   selectedMedico: Medico;
 
-  constructor(private medicoService: MedicoService) {
+  constructor(private router: Router, private medicoService: MedicoService) {
   }
 
   ngOnInit(): void {
@@ -21,6 +22,7 @@ export class MedicosComponent implements OnInit {
 
   onSelect(medico: Medico): void {
     this.selectedMedico = medico;
+    this.router.navigate(['/medicos/edit', medico.id]);
   }
 
   getMedicos(): void {

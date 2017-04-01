@@ -28,4 +28,9 @@ public class MedicoController {
     public Medico create(@RequestBody @Valid Medico medico) {
         return medicoRepository.save(medico);
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Medico get(@PathVariable("id") int id) {
+        return medicoRepository.findOne(id);
+    }
 }

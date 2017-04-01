@@ -11,11 +11,10 @@
         <th>Email</th>
         <th>Ativo</th>
         <th>Ocupado</th>
-        <th>Ações</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let medico of medicos" (click)="onSelect(medico)"
+      <tr *ngFor="let medico of medicos" (dblclick)="onSelect(medico)"
           [class.active]="medico === selectedMedico">
         <td>{{medico.id}}</td>
         <td>{{medico.primeiroNome}}</td>
@@ -23,10 +22,6 @@
         <td>{{medico.email}}</td>
         <td><input type="checkbox" [checked]="medico.ativo" [disabled]="true"></td>
         <td><input type="radio" [checked]="medico.status == 'OCUPADO'" [disabled]="true"></td>
-        <td>
-          <a routerLink="['/edit/${medico.id}']" class="btn btn-link">Editar</a> |
-          <a routerLink="['/${medico.id}']" class="btn btn-link">Visualizar</a>
-        </td>
       </tr>
       </tbody>
     </table>
