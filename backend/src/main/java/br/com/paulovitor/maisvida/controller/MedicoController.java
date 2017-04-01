@@ -33,4 +33,9 @@ public class MedicoController {
     public Medico get(@PathVariable("id") int id) {
         return medicoRepository.findOne(id);
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public Medico update(@PathVariable("id") int id, @RequestBody @Valid Medico medico) {
+        return medicoRepository.save(medico);
+    }
 }

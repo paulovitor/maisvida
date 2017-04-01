@@ -3,6 +3,7 @@ package br.com.paulovitor.maisvida.controller;
 import br.com.paulovitor.maisvida.model.Medico;
 import br.com.paulovitor.maisvida.repository.MedicoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +25,7 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -41,6 +43,11 @@ public class MedicoControllerTest {
     @Before
     public void inicializa() {
         medico = new Medico("José", "Miguel", CARDIOLOGISTA, "josemiguel@gmail.com", true, DISPONIVEL, "DF", "Brasilia");
+    }
+
+    @After
+    public void finaliza() {
+        medico = null;
     }
 
     @Test
@@ -89,6 +96,17 @@ public class MedicoControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.primeiroNome", is(medico.getPrimeiroNome())));
+    }
+
+    @Test
+    public void deveAtualizarMedico() throws Exception {
+        medico.setPrimeiroNome("Maria");
+
+        mvc.perform(put("/api/medicos/{id}", 1)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(medico)))
+                .andDo(print())
+                .andExpect(status().isOk());
     }
 
     public static String asJsonString(final Object obj) {
