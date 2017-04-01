@@ -17,7 +17,6 @@ export class LoginComponent {
   }
 
   logIn(): void {
-    let link = ['/medicos'];
-    this.router.navigate(link);
+    this.router.navigate(['/medicos']);
   }
 }

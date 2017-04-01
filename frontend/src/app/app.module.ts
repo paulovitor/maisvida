@@ -5,30 +5,25 @@ import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {LoginService} from "./service/login.service";
-import {MedicoService} from "./service/medico.service";
-import {MedicosComponent} from "./view/medico/medicos.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {LoginComponent} from "./view/login/login.component";
-import {MedicoEditComponent} from "./view/medico/medico-edit.component";
-import {MedicoViewComponent} from "./view/medico/medico-view.component";
 import {HeaderComponent} from "./view/header/header.component";
+import {MedicosModule} from "./view/medico/medicos.module";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HeaderComponent,
-    MedicosComponent,
-    MedicoEditComponent,
-    MedicoViewComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    MedicosModule,
     AppRoutingModule
   ],
-  providers: [LoginService, MedicoService],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HeaderComponent
+  ],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
