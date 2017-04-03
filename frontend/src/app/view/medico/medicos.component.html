@@ -11,10 +11,13 @@
         <th>Email</th>
         <th>Ativo</th>
         <th>Ocupado</th>
+        <th>Visualizar</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let medico of medicos" (dblclick)="onSelect(medico)"
+      <tr *ngFor="let medico of medicos"
+          (click)="onSelect(medico)"
+          (dblclick)="onEdit(medico)"
           [class.active]="medico === selectedMedico">
         <td>{{medico.id}}</td>
         <td>{{medico.primeiroNome}}</td>
@@ -22,6 +25,7 @@
         <td>{{medico.email}}</td>
         <td><input type="checkbox" [checked]="medico.ativo" [disabled]="true"></td>
         <td><input type="radio" [checked]="medico.status == 'OCUPADO'" [disabled]="true"></td>
+        <td><span class="glyphicon glyphicon-zoom-in" (click)="onView(medico)"></span></td>
       </tr>
       </tbody>
     </table>

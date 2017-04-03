@@ -4,7 +4,7 @@ services:
 
   mysql:
     image: mariadb
-    container_name: mysql
+    container_name: mysql-maisvida
     ports:
       - 3306:3306
     volumes:
@@ -15,7 +15,7 @@ services:
   
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
+    container_name: phpmyadmin-maisvida
     links:
       - mysql:db
     ports:

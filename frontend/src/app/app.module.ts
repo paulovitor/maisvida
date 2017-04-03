@@ -20,8 +20,7 @@ import {MedicosModule} from "./view/medico/medicos.module";
   ],
   declarations: [
     AppComponent,
-    LoginComponent,
-    HeaderComponent
+    LoginComponent
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

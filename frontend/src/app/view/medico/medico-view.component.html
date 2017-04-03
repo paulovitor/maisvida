@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-md-12">
     <h1>Visualização de médicos</h1>
-    {{medico.primeiroNome}}
+    <p *ngIf="medico">{{medico.primeiroNome}}</p>
   </div>
 </div>

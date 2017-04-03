@@ -22,7 +22,14 @@ export class MedicosComponent implements OnInit {
 
   onSelect(medico: Medico): void {
     this.selectedMedico = medico;
+  }
+
+  onEdit(medico: Medico): void {
     this.router.navigate(['/medicos/edit', medico.id]);
+  }
+
+  onView(medico: Medico): void {
+    this.router.navigate(['/medicos', medico.id]);
   }
 
   getMedicos(): void {
