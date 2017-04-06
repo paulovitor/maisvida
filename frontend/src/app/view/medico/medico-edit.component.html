@@ -1,14 +1,14 @@
 <div class="container">
   <div class="col-md-12">
     <h1>Cadastro de médicos</h1>
-    <form (ngSubmit)="onSubmit()" #medicoForm="ngForm">
+    <form (ngSubmit)="onSubmit(medicoForm.valid)" #medicoForm="ngForm">
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
             <label for="primeiroNome">Primeiro Nome</label>
             <input type="text" class="form-control" name="primeiroNome" id="primeiroNome" placeholder="Nome do Médico"
                    [(ngModel)]="medico.primeiroNome" required #primeiroNome="ngModel">
-            <div [hidden]="primeiroNome.valid || primeiroNome.pristine" class="alert alert-danger">
+            <div [hidden]="primeiroNome.valid" class="alert alert-danger">
               Primeiro Nome é obrigatório
             </div>
           </div>
@@ -18,7 +18,7 @@
             <label for="ultimoNome">Último Nome</label>
             <input type="text" class="form-control" name="ultimoNome" id="ultimoNome" placeholder="Nome do Médico"
                    [(ngModel)]="medico.ultimoNome" required #ultimoNome="ngModel">
-            <div [hidden]="ultimoNome.valid || ultimoNome.pristine" class="alert alert-danger">
+            <div [hidden]="ultimoNome.valid" class="alert alert-danger">
               Último Nome é obrigatório
             </div>
           </div>
@@ -27,9 +27,12 @@
           <div class="form-group">
             <label for="especialidade">Especialidade</label>
             <select class="form-control" name="especialidade" id="especialidade"
-                    (change)="parseValue($event.target.value)">
-              <option *ngFor="let especialidade of especialidades" [value]="especialidade">{{especialidade}}</option>
+                    [(ngModel)]="medico.especialidade" required #especialidade="ngModel">
+              <option *ngFor="let especialidade of especialidades" [ngValue]="especialidade">{{especialidade}}</option>
             </select>
+            <div [hidden]="especialidade.valid" class="alert alert-danger">
+              Especialidade é obrigatório
+            </div>
           </div>
         </div>
       </div>
@@ -39,7 +42,7 @@
             <label for="email">Email</label>
             <input type="email" class="form-control" name="email" id="email" placeholder="Email"
                    [(ngModel)]="medico.email" required #email="ngModel">
-            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+            <div [hidden]="email.valid" class="alert alert-danger">
               Email é obrigatório
             </div>
           </div>
@@ -61,12 +64,15 @@
             <div class="radio">
               <label class="radio-inline">
                 <input type="radio" name="status" id="ocupado" value="OCUPADO"
-                       [(ngModel)]="medico.status"> Ocupado
+                       [(ngModel)]="medico.status" required #status="ngModel"> Ocupado
               </label>
               <label class="radio-inline">
                 <input type="radio" name="status" id="disponivel" value="DISPONIVEL"
-                       [(ngModel)]="medico.status"> Disponivel
+                       [(ngModel)]="medico.status" required> Disponivel
               </label>
+            </div>
+            <div [hidden]="status.valid" class="alert alert-danger">
+              Status é obrigatório
             </div>
           </div>
         </div>
@@ -79,7 +85,7 @@
                     [(ngModel)]="medico.estado" required #estado="ngModel">
               <option value="DF" [selected]="true">DF</option>
             </select>
-            <div [hidden]="estado.valid || estado.pristine" class="alert alert-danger">
+            <div [hidden]="estado.valid" class="alert alert-danger">
               Estado é obrigatório
             </div>
           </div>
@@ -91,7 +97,7 @@
                     [(ngModel)]="medico.cidade" required #cidade="ngModel">
               <option value="Brasilia" [selected]="true">Brasilia</option>
             </select>
-            <div [hidden]="cidade.valid || cidade.pristine" class="alert alert-danger">
+            <div [hidden]="cidade.valid" class="alert alert-danger">
               Cidade é obrigatório
             </div>
           </div>

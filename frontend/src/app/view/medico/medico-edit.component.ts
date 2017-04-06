@@ -34,15 +34,13 @@ export class MedicoEditComponent implements OnInit {
     });
   }
 
-  parseValue(value : string) {
-    this.medico.especialidade = Especialidade[value];
-  }
-
-  onSubmit() {
-    if (isNaN(this.medico.id))
-      this.medicoService.create(this.medico).then(() => this.cancel());
-    else
-      this.medicoService.update(this.medico).then(() => this.cancel());
+  onSubmit(isValid: boolean) {
+    if (isValid) {
+      if (isNaN(this.medico.id))
+        this.medicoService.create(this.medico).then(() => this.cancel());
+      else
+        this.medicoService.update(this.medico).then(() => this.cancel());
+    }
   }
 
   cancel(): void {
