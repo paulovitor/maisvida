@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Medico} from "../../model/medico";
 import {MedicoService} from "../../service/medico.service";
 import {ActivatedRoute, Params} from "@angular/router";
+import {Location} from "@angular/common";
 
 @Component({
   moduleId: module.id,
@@ -13,7 +14,7 @@ export class MedicoViewComponent implements OnInit {
   medico: Medico;
 
   constructor(private medicoService: MedicoService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute, private location: Location) {
   }
 
   ngOnInit(): void {
@@ -22,5 +23,9 @@ export class MedicoViewComponent implements OnInit {
       this.medicoService.getMedico(id)
         .then(medico => this.medico = medico);
     });
+  }
+
+  back(): void {
+    this.location.back();
   }
 }

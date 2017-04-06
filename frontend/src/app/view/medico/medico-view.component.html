@@ -1,6 +1,67 @@
 <div class="container">
   <div class="col-md-12">
     <h1>Visualização de médicos</h1>
-    <p *ngIf="medico">{{medico.primeiroNome}}</p>
+    <div *ngIf="medico">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Primeiro Nome</label>
+            <label class="form-control">{{medico.primeiroNome}}</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Último Nome</label>
+            <label class="form-control">{{medico.ultimoNome}}</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Especialidade</label>
+            <label class="form-control">{{medico.especialidade}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Email</label>
+            <label class="form-control">{{medico.email}}</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Ativo</label>
+            <label class="form-control">{{medico.ativo ? 'Sim' : 'Não'}}</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Status</label>
+            <label class="form-control">{{medico.status}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Estado</label>
+            <label class="form-control">{{medico.estado}}</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Cidade</label>
+            <label class="form-control">{{medico.cidade}}</label>
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" (click)="back()" class="btn btn-default">Voltar</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
